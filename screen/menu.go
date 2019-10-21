@@ -23,7 +23,7 @@ func (mw *MainWin) MakeMenu() {
 		widget.Layout().AddWidget(proxyInput)
 		setBtn := widgets.NewQPushButton2("save", nil)
 		setBtn.ConnectClicked(func(checked bool) {
-			mw.proxyUrl=proxyInput.ToPlainText()
+			mw.proxyUrl = proxyInput.ToPlainText()
 			for _, v := range mw.engineMap {
 				v.SetProxy(proxyInput.ToPlainText())
 			}
@@ -46,7 +46,6 @@ func (mw *MainWin) MakeMenu() {
 
 	mw.mainmenu.AddMenu(filemenu)
 
-
 	aboutmenu := widgets.NewQMenu2("&Help", nil)
 
 	aboutTool := aboutmenu.AddAction("&About This Tool")
@@ -56,6 +55,24 @@ func (mw *MainWin) MakeMenu() {
 		widget := widgets.NewQWidget(win, 0)
 		widget.SetLayout(widgets.NewQVBoxLayout())
 		text := widgets.NewQLabel2("This tool is a small tool to help researchers easily \n search papers and download citations", win, 0)
+		widget.Layout().AddWidget(text)
+		closeBtn := widgets.NewQPushButton2("close", win)
+		closeBtn.ConnectClicked(func(checked bool) {
+			win.Hide()
+		})
+		widget.Layout().AddWidget(closeBtn)
+		win.SetCentralWidget(widget)
+		win.Show()
+	})
+
+	contactTool := aboutmenu.AddAction("&Contact me")
+	contactTool.SetMenuRole(widgets.QAction__AboutRole)
+	contactTool.ConnectTriggered(func(checked bool) {
+		win := widgets.NewQMainWindow(mw.window, 0)
+		widget := widgets.NewQWidget(win, 0)
+		widget.SetLayout(widgets.NewQVBoxLayout())
+		text := widgets.NewQLabel2("Github: <a href='https://github.com/hundredwz/BibTools' target='_blank'>BibTools<a>", win, 0)
+		text.SetOpenExternalLinks(true)
 		widget.Layout().AddWidget(text)
 		closeBtn := widgets.NewQPushButton2("close", win)
 		closeBtn.ConnectClicked(func(checked bool) {

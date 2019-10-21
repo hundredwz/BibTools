@@ -34,7 +34,7 @@ func NewMainWin() *MainWin {
 func (mw *MainWin) Show() {
 	mw.clipBoard = mw.app.Clipboard()
 	mw.window.SetMinimumSize2(250, 200)
-	mw.window.SetWindowTitle("Scholar Tools")
+	mw.window.SetWindowTitle("Bib Tools")
 
 	schLayout := NewSearchLayout(mw.clipBoard, mw.engineMap)
 	schWidget := schLayout.MakeWindow()
