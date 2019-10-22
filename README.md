@@ -22,5 +22,5 @@ I couldn't build static version for linux and macos on windows. So if you need t
 
 You can make pr to update this tool. 
 
-If you have any problems, you can write issues.
+If you have any problems, you can commit issues to seek for help.
 
